@@ -1,6 +1,6 @@
-# 🏆 Automatizaciones para la Generación Rápida de Archivos
+# Automatizaciones en Generación Rápida de Archivos para Concursos de PC
 
-Este es un repositorio personal con soluciones, plantillas y utilidades para programación competitiva enfocados a los tres únicos mejores lenguajes en el deporte **C++**, **Java** y **Python**.
+Este es un repositorio personal con soluciones, plantillas y utilidades para la PC enfocados a los tres únicos mejores lenguajes en el deporte **C++**, **Java** y **Python**.
 
 ---
 
@@ -26,8 +26,8 @@ Este es un repositorio personal con soluciones, plantillas y utilidades para pro
 ```
 /
 ├── util/       # Almacenamiento de herramientas y utilidades
-├── contests/   # Almacenamiento y orden de las participaciones en concursos CF
-└── README.md   # Este archivo
+├── contests/   # Almacenamiento de participaciones en concursos
+└── README.md   # Archivo actual
 ```
 
 ---
@@ -40,8 +40,8 @@ Necesitas tener instalado:
 - **Git** (opcional):
 
 ```bash
-git clone https://github.com/josuerom/contest.git
-cd contest
+git clone https://github.com/josuerom/automation-for-competitions.git
+cd automation-for-competitions
 ```
 
 ---
@@ -81,6 +81,8 @@ python3 nombre.py < input.txt > output.txt
 4. Escribe tu solución, pruébala y guarda los cambios
 5. ¡Listo para hacer commit y subir!
 
+**NOTA**: le recomiendo convertir los programas en `.exe` con el fin de invocarlos desde cualquier parte de su sistema, incluyendolos a las variables de entorno `Path`.
+
 ---
 
 ## 📄 Ejemplo de plantilla en C++
@@ -95,7 +97,7 @@ int main() {
     int tt;
     cin >> tt;
     while (tt--) {
-        // Lógica del problema aquí
+        // Tu lógica
     }
 }
 ```
@@ -116,7 +118,7 @@ Haz un fork, crea una rama y envía un Pull Request. Toda mejora es bienvenida �
 
 ## 📜 Licencia
 
-Este repositorio está bajo la licencia no estándar. Debe leearla.
+Este repositorio está bajo la licencia personalizada. Debe leerla ahora.
 
 ---
 
