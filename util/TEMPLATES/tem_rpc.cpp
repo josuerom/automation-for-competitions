@@ -32,7 +32,7 @@ public:
 int main() {
    ios::sync_with_stdio(false);
    cin.tie(0); cout.tie(0);
-   RPCRound$%Round%$_P$%file%$ in;
+   RPCRound$%R%$_P$%file%$ in;
    // in.readTestCase();
    // in.anotherSolution();
    return 0;

@@ -12,7 +12,7 @@ import urllib.request
 from datetime import datetime
 
 
-def consultarNombreProblema(contest_id):
+def obtener_nombre_problema(contest_id):
    url = f"https://codeforces.com/api/contest.standings?contestId={contest_id}&from=1&count=1&showUnofficial=true"
    problem_set = []
    try:
@@ -49,23 +49,23 @@ def consultarNombreProblema(contest_id):
       print(f"Error {e}")
 
 
-def generadorConcursoCFUnix():
+def gen_contest_cf_unix():
    contest_id = input("\033[93mContestID ->\033[0m ")
    root = f"/home/josuerom/Workspace/contests/CF"
    fecha_hora = datetime.now()
-   anio_actual = fecha_hora.year
-   root = root + f"\\{anio_actual}"
+   anio = fecha_hora.strftime("%Y")
+   root = root + f"\\{anio}"
    contest_route = os.path.join(root, contest_id)
 
-   fecha_actual = fecha_hora.strftime("%d/%m/%Y")
-   print("Fecha actual:", fecha_actual)
+   fecha_hora_actual = fecha_hora.strftime("%d/%m/%Y %H:%M:%S")
+   print("Fecha y hora actual:", fecha_hora_actual)
 
    if os.path.exists(contest_route):
       print(f"\033[91mThe contest already exists 😞.\033[0m")
       return
 
    n = int(input("\033[93mHow many problems ->\033[0m "))
-   nameProblem = consultarNombreProblema(contest_id)
+   nameProblem = obtener_nombre_problema(contest_id)
 
    while True:
       option = int(
@@ -100,7 +100,6 @@ def generadorConcursoCFUnix():
    autor = "josuerom"
    dia = fecha_hora.strftime("%d")
    mes = fecha_hora.strftime("%m")
-   anio = fecha_hora.strftime("%Y")
 
    for i in range(n):
       invalid_chars = r'_<>:"/\|?*'
@@ -134,4 +133,4 @@ def generadorConcursoCFUnix():
 
 
 if __name__ == "__main__":
-   generadorConcursoCFUnix()
+   gen_contest_cf_unix()

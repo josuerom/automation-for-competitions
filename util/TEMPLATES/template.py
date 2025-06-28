@@ -3,7 +3,6 @@
    █▄█ █▄█ ▄█ █▄█ ██▄ █▀▄ █▄█ █░▀░█
 """
 def solve():
-   pass
 
 tt = 1
 tt = int(input())

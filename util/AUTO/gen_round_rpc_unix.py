@@ -12,7 +12,7 @@ import subprocess
 from datetime import datetime
 
 
-def buscarDocumentoPDF(dir_descargas):
+def buscar_documento_pdf(dir_descargas):
    archivos_pdf = glob.glob(os.path.join(dir_descargas, "*.pdf"))
    for archivo in archivos_pdf:
       nombre_archivo = os.path.basename(archivo)
@@ -21,7 +21,7 @@ def buscarDocumentoPDF(dir_descargas):
    return None
 
 
-def generadorRondaRPCUnix():
+def gen_round_rpc_unix():
    ronda = input("\033[93mRonda del año ->\033[0m ")
    ruta_base_rpc = r"/home/josuerom/Workspace/contests/RPC"
    fecha_hora = datetime.now()
@@ -37,7 +37,7 @@ def generadorRondaRPCUnix():
       return
 
    ruta_descargas = r"/home/josuerom/Descargas"
-   archivo_pdf = buscarDocumentoPDF(ruta_descargas)
+   archivo_pdf = buscar_documento_pdf(ruta_descargas)
    obtener_pdf, encontro_pdf = None, False
 
    if archivo_pdf:
@@ -56,10 +56,9 @@ def generadorRondaRPCUnix():
    tem_java = r"/home/josuerom/Workspace/util/TEMPLATES/tem.java"
    tem_py = r"/home/josuerom/Workspace/util/TEMPLATES/tem.py"
 
-   nombre_equipo = "2 BITS"
+   nombre_equipo = "2Bits"
    dia = fecha_hora.strftime("%d")
    mes = fecha_hora.strftime("%m")
-   anio = fecha_hora.strftime("%Y")
 
    lista_id = (
       input("\033[93mQué problemas intentará resolver. Ej: [A B] ->\033[0m ")
@@ -120,4 +119,4 @@ def generadorRondaRPCUnix():
 
 
 if __name__ == "__main__":
-   generadorRondaRPCUnix()
+   gen_round_rpc_unix()
