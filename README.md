@@ -26,8 +26,8 @@ Este es un repositorio personal con soluciones, plantillas y utilidades para la 
 ```
 /
 ├── util/       # Almacenamiento de herramientas y utilidades
-├── contests/   # Almacenamiento de participaciones en concursos
-└── README.md   # Archivo actual
+├── contests/   # Almacenamiento de participaciones de concursos en línea
+└── README.md   # Documentación del proyecto
 ```
 
 ---
@@ -36,7 +36,7 @@ Este es un repositorio personal con soluciones, plantillas y utilidades para la 
 
 Necesitas tener instalado:
 
-- **Python**: versión 3.7 o superior
+- **Python**: versión >= 3.7
 - **Git** (opcional):
 
 ```bash
@@ -52,7 +52,7 @@ cd automation-for-competitions
 
 ```bash
 cd cpp/
-g++ -std=c++20 nombre.cpp -o programa
+g++ -std=c++20 -O2 nombre.cpp -o programa
 ./programa < input.txt > output.txt
 ```
 
@@ -68,7 +68,7 @@ java Nombre < input.txt > output.txt
 
 ```bash
 cd python/
-python3 nombre.py < input.txt > output.txt
+python3 -OO nombre.py < input.txt > output.txt
 ```
 
 ---
@@ -92,13 +92,14 @@ python3 nombre.py < input.txt > output.txt
 using namespace std;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0); cout.tie(0);
-    int tt;
-    cin >> tt;
-    while (tt--) {
-        // Tu lógica
-    }
+   ios::sync_with_stdio(false);
+   cin.tie(nullptr);
+   int tt;
+   cin >> tt;
+   while (tt--) {
+       // algoritmo
+   }
+   return 0;
 }
 ```
 
@@ -126,7 +127,7 @@ Este repositorio está bajo la licencia personalizada. Debe leerla ahora.
 
 ¿Tienes sugerencias o ideas?
 
-Puedes escribirme directamente o abrir un issue en el repositorio.
+Puedes abrir un issue en el repositorio.
 
 ---
 

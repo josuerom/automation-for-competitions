@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 import static java.lang.Math.*;
 
-public class {
+public class Main {
    public static void main(String[] args) {
       try (FastReader io = new FastReader()) {
          int tt = 1;
@@ -32,9 +32,9 @@ public class {
          br = new BufferedReader(new InputStreamReader(i));
       }
 
-      public FastReader(String idFile) throws IOException {
-         super("samples/output.out");
-         br = new BufferedReader(new FileReader("samples/" + idFile));
+      public FastReader(String inputFile) throws IOException {
+         super("./output.txt");
+         br = new BufferedReader(new FileReader(inputFile));
       }
 
       public String next() {

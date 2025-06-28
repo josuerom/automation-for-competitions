@@ -1,13 +1,15 @@
 """
-   Generador de concursos automáticos de codeforces, enfocado en sistemas Windows
-   Autor: josuerom
-   Fecha: 09/06/24
+Generador automático de archivos para concursos de codeforces, enfocado en sistemas Windows
+Autor: josuerom
+Fecha: 16/06/25
 """
+
 import os
 import subprocess
 import re
 import json
 import urllib.request
+from datetime import datetime
 
 
 def consultarNombreProblema(contest_id):
@@ -15,24 +17,24 @@ def consultarNombreProblema(contest_id):
    problem_set = []
    try:
       headers = {
-         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
       }
       req = urllib.request.Request(url, headers=headers)
       response = urllib.request.urlopen(req)
-      data = json.loads(response.read().decode('utf-8'))
+      data = json.loads(response.read().decode("utf-8"))
       s = str(data)
       s = re.sub(r"[.:,{}()\[\]]", "", s)
       s = re.sub(r"' '", " ", s)
       s = re.sub(r"'", "", s).split(" ")
       ind = title = ""
       for i in range(0, len(s)):
-         if s[i] == 'index':
+         if s[i] == "index":
                ind = s[i + 1]
                i += 2
-         elif s[i] == 'name':
+         elif s[i] == "name":
                i += 1
-               while s[i] != 'type':
-                  if s[i + 1] != 'type':
+               while s[i] != "type":
+                  if s[i + 1] != "type":
                      title += s[i] + " "
                   else:
                      title += s[i]
@@ -49,8 +51,14 @@ def consultarNombreProblema(contest_id):
 
 def generadorConcursoCFWindows():
    contest_id = input("\033[93mContestID ->\033[0m ")
-   root = f"d:\\workspace\\contests\\cf"
+   root = f"c:\\workspace\\contests\\cf"
+   fecha_hora = datetime.now()
+   anio_actual = fecha_hora.year
+   root = root + f"\\{anio_actual}"
    contest_route = os.path.join(root, contest_id)
+
+   fecha_actual = fecha_hora.strftime("%d/%m/%Y")
+   print("Fecha actual:", fecha_actual)
 
    if os.path.exists(contest_route):
       print(f"\033[91mThe contest already exists 😞.\033[0m")
@@ -60,7 +68,11 @@ def generadorConcursoCFWindows():
    nameProblem = consultarNombreProblema(contest_id)
 
    while True:
-      option = int(input("\033[93mSelect the language:\n1. cpp\n2. java\n3. python\n->\033[0m "))
+      option = int(
+         input(
+               "\033[93mSelect the language:\n1. cpp\n2. java\n3. python\n->\033[0m "
+         )
+      )
       extension = None
       if option == 1:
          extension = "cpp"
@@ -76,22 +88,50 @@ def generadorConcursoCFWindows():
    os.makedirs(contest_route)
 
    print("\033[94mThese files were created:\n-----------------------------\033[0m")
-   open(f"{contest_route}\\in1", 'w')
+   open(f"{contest_route}\\in1", "w")
 
-   for i in range(0, n):
+   ubicacion_plantillas = f"c:\\workspace\\util\\templates"
+   tipos_de_plantillas = {
+      "cpp": os.path.join(ubicacion_plantillas, "tem.cpp"),
+      "java": os.path.join(ubicacion_plantillas, "tem.java"),
+      "py": os.path.join(ubicacion_plantillas, "tem.py"),
+   }
+
+   autor = "josuerom"
+   dia = fecha_hora.strftime("%d")
+   mes = fecha_hora.strftime("%m")
+   anio = fecha_hora.strftime("%Y")
+
+   for i in range(n):
       invalid_chars = r'_<>:"/\|?*'
-      file_title = ''.join(
-         c if c not in invalid_chars else '_' for c in nameProblem[i])
-      with open(f"{contest_route}\\{file_title}.{extension}", 'w'):
-         pass
+      file_title = "".join(
+         c if c not in invalid_chars else "_" for c in nameProblem[i]
+      )
+      output_path = os.path.join(contest_route, f"{file_title}.{extension}")
+
+      with open(tipos_de_plantillas[extension], "r", encoding="utf-8") as f:
+         lines = f.readlines()
+
+      lines = [
+         line.replace("$%U%$", autor)
+         .replace("$%D%$", dia)
+         .replace("$%M%$", mes)
+         .replace("$%Y%$", anio)
+         .replace("$%file%$", file_title)
+         for line in lines
+      ]
+
+      with open(output_path, "w", encoding="utf-8") as out_file:
+         out_file.writelines(lines)
+
       print(f"{file_title}.{extension}")
 
    print("in1\n\033[94m-----------------------------\033[0m")
-   print(f"\033[94mStarting contest with VSCode 😁😁...\033[0m", end='\n')
+   print(f"\033[94mStarting contest with VSCode 😁😁...\033[0m", end="\n")
 
    subprocess.run(f"code {contest_route}", shell=True)
    subprocess.run("taskkill /f /im cmd.exe", shell=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
    generadorConcursoCFWindows()

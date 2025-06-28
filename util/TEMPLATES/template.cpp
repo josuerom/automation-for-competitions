@@ -14,7 +14,7 @@ int main() {
    ios::sync_with_stdio(false);
    cin.tie(0); cout.tie(0);
    int tt = 1;
-   // cin >> tt;
+   cin >> tt;
 #ifdef LOCAL
    for (int i = 1; i <= tt; i++) {
       cout << "Case #" << i << ":\n";

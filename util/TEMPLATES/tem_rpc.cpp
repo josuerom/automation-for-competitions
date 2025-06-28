@@ -1,15 +1,15 @@
 /**
- *   █▀█  █▀▀▄ ─▀─ ▀▀█▀▀ █▀▀
- *   ─▄▀  █▀▀▄ ▀█▀ ──█── ▀▀█
- *   █▄▄  ▀▀▀─ ▀▀▀ ──▀── ▀▀▀
+ *   author:  $%U%$
+ *   created: $%D%$/$%M%$/$%Y%$
 **/
 #include <bits/stdc++.h>
 using namespace std;
 
-#define long  unsigned long long
-#define uint  unsigned int
+#define long unsigned long long
+#define uint unsigned int
+#define nl   '\n'
 
-class RPCProblem {
+class RPCRound$%R%$_P$%file%$ {
 public:
    static const int N = (1e1) + 100;
 
@@ -17,8 +17,7 @@ public:
    }
 
    void readTestCase() {
-      int TC;
-      cin >> TC;
+      int TC; cin >> TC;
 #ifdef LOCAL
       for (int i = 1; i <= TC; i++) {
          cout << "Case #" << i << ":\n";
@@ -33,7 +32,7 @@ public:
 int main() {
    ios::sync_with_stdio(false);
    cin.tie(0); cout.tie(0);
-   RPCProblem in;
+   RPCRound$%Round%$_P$%file%$ in;
    // in.readTestCase();
    // in.anotherSolution();
    return 0;
